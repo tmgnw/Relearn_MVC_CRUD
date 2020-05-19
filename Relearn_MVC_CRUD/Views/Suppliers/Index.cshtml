@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Relearn_MVC_CRUD.Models.Supplier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-6 col-8 align-self-center">
+            <h3 class="text-themecolor m-b-0 m-t-0">Table Data table</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Table Data table</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Data Table</h4>
+                    <h6 class="card-title">Suppliers</h6>
+                    <div class="table-responsive m-t-40">
+                        <p>
+                            <a href="@Url.Action("Create")"
+                               class="btn btn-success"
+                               data-toggle="tooltip"
+                               title="Create">
+                                <i class="mdi mdi-plus"></i>
+                                Create
+                            </a>
+                        </p>
+
+                        <table id="myTable" class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                    <th class="no-sort">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>
+                                            <a href="@Url.Action("Edit",
+                                                    new { id = item.Id })"
+                                               class="btn btn-warning"
+                                               data-toggle="tooltip"
+                                               title="Edit">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </a> |
+                                            <a href="@Url.Action("Details",
+                                                    new { id = item.Id })"
+                                               class="btn btn-info"
+                                               data-toggle="tooltip"
+                                               title="Details">
+                                                <i class="glyphicon glyphicon-info-sign"></i>
+                                            </a> |
+                                            <a href="@Url.Action("Delete",
+                                                    new { id = item.Id })"
+                                               class="btn btn-danger"
+                                               data-toggle="tooltip"
+                                               title="Delete">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
